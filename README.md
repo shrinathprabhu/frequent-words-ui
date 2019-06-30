@@ -20,6 +20,13 @@ npm run serve
 npm run build
 ```
 
+-------------
+### Technologies used
+- **Vue-cli** used to develop Vue apps with a simple setup and fast track the process
+- **Vuex** used for state management across vue apps
+- **Vuetify** used for reusing the prebuilt components and elements that follow material design guidelines
+- **Vue-axios and Axios** used for requesting external Api end points
+
 --------------------
 ### Elements
 - **NumberField** allows you to enter number or change number
