@@ -2,16 +2,16 @@ import Vue from "vue";
 import axios from "axios";
 import VueAxios from "vue-axios";
 
+const API_URL = "https://frequent-words.herokuapp.com";
+
 const ApiService = {
     init() {
       Vue.use(VueAxios, axios);
-    //   Vue.axios.defaults.baseURL = API_URL;
     },
 
-    setHeader() {
-        Vue.axios.defaults.headers.common[
-          "custom-header"
-        ] = 'test-app';
+    setBaseUrlAndHeader() {
+        Vue.axios.defaults.baseURL = API_URL;
+        Vue.axios.defaults.headers.get["custom-header"] = "test-app";
     },
 
     getFrequency(topN, isCaseInsensitive) {
@@ -21,12 +21,18 @@ const ApiService = {
         } else {
             queryString += `&topN=0`;
         }
-        queryString += `&isCaseInsensitive=${isCaseInsensitive}`;
-        return Vue.axios.get(`http://localhost:3000/frequent-words?${queryString}`).catch(error => {
+        if(isCaseInsensitive) {
+            queryString += `&isCaseInsensitive=true`;
+        } else {
+            queryString += `&isCaseInsensitive=false`;
+        }
+        return Vue.axios.get(`frequent-words?${queryString}`).catch(error => {
             throw new Error(`[RWV] ApiService ${error}`);
         });
     }
 
 }
+
+ApiService.setBaseUrlAndHeader();
 
 export default ApiService;
