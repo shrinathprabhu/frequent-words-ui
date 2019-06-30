@@ -1,28 +1,42 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app :dark="dark">
+    <v-toolbar app>
+      <v-spacer></v-spacer>
+      <v-toolbar-title class="headline text-uppercase">
+        <span>Frequent Words</span>
+      </v-toolbar-title>
+      <v-spacer></v-spacer>
+    </v-toolbar>
+
+    <v-content>
+      <v-container>
+        <v-switch
+          v-model="dark"
+          :label="dark ? `Dark Theme` : `Light Theme`"
+          color="success"
+        >
+        </v-switch>
+      </v-container>
+      <SubmitValues/>
+      <FrequencyTable/>
+    </v-content>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import SubmitValues from './components/Submit';
+import FrequencyTable from './components/FrequencyTable';
 
 export default {
-  name: 'app',
+  name: 'App',
   components: {
-    HelloWorld
+    SubmitValues,
+    FrequencyTable
+  },
+  data () {
+    return {
+      dark: false
+    }
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
