@@ -26,9 +26,7 @@ const ApiService = {
         } else {
             queryString += `&isCaseInsensitive=false`;
         }
-        return Vue.axios.get(`frequent-words?${queryString}`).catch(error => {
-            throw new Error(`[RWV] ApiService ${error}`);
-        });
+        return Vue.axios.get(`frequent-words?${queryString}`);
     }
 
 }

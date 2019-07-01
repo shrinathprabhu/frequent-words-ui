@@ -19,11 +19,19 @@
       </v-container>
       <SubmitValues/>
       <FrequencyTable/>
+      <v-snackbar
+        v-model="snackbar"
+        :color="color"
+        :timeout="snackbarTimeout"
+      >
+        {{ message }}
+      </v-snackbar>
     </v-content>
   </v-app>
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
 import SubmitValues from './components/Submit';
 import FrequencyTable from './components/FrequencyTable';
 
@@ -35,7 +43,28 @@ export default {
   },
   data () {
     return {
-      dark: false
+      dark: false,
+      snackbarTimeout: 3000
+    }
+  },
+  computed: {
+    snackbar: {
+      get() {
+        return this.$store.state.showSnackbar;
+      },
+      set(value) {
+        this.$store.state.showSnackbar = value;
+      }
+    },
+    color: {
+      get() {
+        return this.$store.state.snackBarColor;
+      }
+    },
+    message: {
+      get() {
+        return this.$store.state.snackBarMessage;
+      }
     }
   }
 }
