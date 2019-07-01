@@ -22,6 +22,7 @@
       <v-snackbar
         v-model="snackbar"
         :color="color"
+        multi-line=true
         :timeout="snackbarTimeout"
       >
         {{ message }}
@@ -65,7 +66,8 @@ export default {
       get() {
         return this.$store.state.snackBarMessage;
       }
-    }
+    },
+    ...mapGetters(["snackBarState", "snackBarColorState", "snackBarMessageState"])
   }
 }
 </script>
