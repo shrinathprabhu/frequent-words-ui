@@ -1,7 +1,7 @@
 <template>
     <v-container>
         <v-layout>
-            <v-flex md3></v-flex>
+            <v-spacer></v-spacer>
             <v-flex xs12 sm12 md6>
                 <v-data-table
                     :headers="tableHeaders"
@@ -14,6 +14,7 @@
                     </template>
                 </v-data-table>
             </v-flex>
+            <v-spacer></v-spacer>
         </v-layout>
     </v-container>
 </template>
